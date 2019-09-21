@@ -1,0 +1,36 @@
+
+<html>
+  <head>
+    <title>reading file</title>
+   </head>
+<body>
+
+
+<input type="file" id="myFile">
+<hr>
+
+<div style="float: left;">
+<textarea style="width:500px;height: 400px" id=""></textarea>
+</div>
+<div>
+<textarea style="width:500px;height: 400px;margin-left: 50px;" id="output"></textarea>
+</div>
+<script>
+var input = document.getElementById("myFile");
+var output = document.getElementById("output");
+
+input.addEventListener("change", function () {
+  if (this.files && this.files[0]) {
+    var myFile = this.files[0];
+    var reader = new FileReader();
+
+    reader.addEventListener('load', function (e) {
+      output.textContent = e.target.result;
+    });
+
+    reader.readAsBinaryString(myFile);
+  }
+});
+</script>
+  </body>
+</html>
